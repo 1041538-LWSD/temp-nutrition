@@ -4,12 +4,14 @@ import 'nutrition_data.dart';
 class OpenFoodFactsService {
   static Future<NutritionData?> fetchNutritionByBarcode(String barcode) async {
     OpenFoodAPIConfiguration.userAgent = UserAgent(
-      name: 'NutritionApp',
-      url: '',
+      name: 'SmartNutritionApp',
+      version: '1.0',
+      system: 'Flutter',
+      url: 'https://example.com',
     );
 
     final queryConfig = ProductQueryConfiguration(
-      barcode,
+      barcode.trim(),
       version: ProductQueryVersion.v3,
       language: OpenFoodFactsLanguage.ENGLISH,
     );
@@ -17,7 +19,7 @@ class OpenFoodFactsService {
     try {
       final result = await OpenFoodAPIClient.getProductV3(queryConfig);
 
-      if (result.status == ProductResultV3.statusSuccess && result.product != null) {
+      if (result.product != null) {
         final product = result.product!;
         List<String> extras = [];
         

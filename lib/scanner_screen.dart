@@ -18,7 +18,6 @@ class ScannerScreen extends StatefulWidget {
   _ScannerScreenState createState() => _ScannerScreenState();
 }
 
-// Added AutomaticKeepAliveClientMixin so the camera doesn't turn off when swiping tabs
 class _ScannerScreenState extends State<ScannerScreen> with AutomaticKeepAliveClientMixin {
   final MobileScannerController cameraController = MobileScannerController();
   final GlobalKey _cameraKey = GlobalKey(); 
